@@ -6,6 +6,24 @@ ARG USER_GID=$USER_UID
 # Create the user
 RUN groupadd --gid $USER_GID $USERNAME \
     && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
+    apt-get update && apt-get install -y \
+    libx11-xcb1 \
+    libxcb1 \
+    libxcb-glx0 \
+    libxcb-keysyms1 \
+    libxcb-image0 \
+    libxcb-shm0 \
+    libxcb-icccm4 \
+    libxcb-sync1 \
+    libxcb-xfixes0 \
+    libxcb-shape0 \
+    libxcb-randr0 \
+    libxcb-render-util0 \
+    libxcb-xinerama0 \
+    libxcb-xkb1 \
+    libxkbcommon-x11-0 \
+    qt5-default \
+    && rm -rf /var/lib/apt/lists/* \
     #
     # [Optional] Add sudo support. Omit if you don't need to install software after connecting.
     && apt-get update \
@@ -22,7 +40,7 @@ ENV SHELL /bin/bash
 
 COPY . /ros2_app_deployment
 
-
+ENV QT_X11_NO_MITSHM=1
 
 RUN rosdep update \
     && cd /ros2_app_deployment \
