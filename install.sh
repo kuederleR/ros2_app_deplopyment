@@ -9,7 +9,7 @@ else
     echo "Docker is already installed."
 fi
 
-sudo usermod -aG docker 
+sudo usermod -aG docker $USER
 
 git clone https://github.com/kuederleR/ros2_app_deplopyment.git /tmp/ros2_app_deployment
 cd /tmp/ros2_app_deployment

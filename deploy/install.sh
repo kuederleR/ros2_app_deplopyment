@@ -20,4 +20,4 @@ sudo cp "$(dirname "$0")/network_create.sh" "$TARGET_DIR"
 sudo cp "$(dirname "$0")/execute.sh" "$TARGET_DIR"
 sudo cp "$(dirname "$0")/ap_icon.png" "$TARGET_DIR"
 
-sudo docker build -t ros2_app_deployment "$(dirname "$0")/.."
+sudo docker build -t ros2-deployment "$(dirname "$0")/.."
