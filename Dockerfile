@@ -13,7 +13,13 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && apt-get install -y \
     && apt install ros-humble-rviz2 -y \
     && apt-get install ros-humble-demo-nodes-py -y \
-    && apt-get install libxcb-xinerama0 -y \
+    && apt-get install -y \
+    libxcb-xinerama0 \
+    libxcb1 \
+    libxcb-xinput0 \
+    libxcb-image0 \
+    libxcb-keysyms1 \
+    libxcb-render-util0 \
     && rm -rf /var/lib/apt/lists/* \
     && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME \
@@ -24,7 +30,8 @@ ENV SHELL /bin/bash
 
 COPY . /ros2_app_deployment
 
-ENV QT_X11_NO_MITSHM=1
+# ENV QT_X11_NO_MITSHM=1
+ENV DISPLAY=:0
 
 RUN rosdep update \
     && cd /ros2_app_deployment \
@@ -47,3 +54,6 @@ ENTRYPOINT ["/ros2_app_deployment/entrypoint.sh"]
 # Run export RMW_IMPLEMENTATION=rmw_fastrtps_cpp -- Don't need to do this anymore
 
 # docker run -it --rm --net=host --ipc=host --pid=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw" ros2-deployment 
+
+
+# docker run -it --rm --net=host --ipc=host --pid=host --env="DISPLAY" --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" ros2-deployment 
