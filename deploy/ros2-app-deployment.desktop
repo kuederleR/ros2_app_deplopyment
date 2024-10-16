@@ -1,7 +1,6 @@
 [Desktop Entry]
 Version=1.0
 Name=Ros2 Docker Deployment Example
-Exec=gnome-terminal -- bash -c "/etc/ryankuederle/ros2-app-deployment/execute.sh; exec bash"
+Exec=/etc/ryankuederle/ros2-app-deployment/execute.sh
 Icon=/etc/ryankuederle/ros2-app-deployment/ap_icon.png
-Terminal=true
 Type=Application

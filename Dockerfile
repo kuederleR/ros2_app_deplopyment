@@ -25,7 +25,9 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME \
     && export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
 RUN apt-get update && apt-get upgrade -y
-RUN apt-get install -y python3-pip
+RUN apt-get install -y python3-pip\
+    && pip install setuptools==58.2.0
+
 ENV SHELL /bin/bash
 
 COPY . /ros2_app_deployment
