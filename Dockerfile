@@ -32,8 +32,8 @@ ENV SHELL /bin/bash
 
 COPY . /ros2_app_deployment
 
-# ENV QT_X11_NO_MITSHM=1
-ENV DISPLAY=:0
+ENV QT_X11_NO_MITSHM=1
+# ENV DISPLAY=:0
 
 RUN rosdep update \
     && cd /ros2_app_deployment \
