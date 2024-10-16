@@ -10,9 +10,9 @@ RUN groupadd --gid $USER_GID $USERNAME \
     # [Optional] Add sudo support. Omit if you don't need to install software after connecting.
     && apt-get update \
     && apt-get install -y sudo \
-    && apt-get install -y \
-    && apt install ros-humble-rviz2 -y \
-    && apt-get install ros-humble-demo-nodes-py -y \
+    # && apt-get install -y \
+    # && apt install ros-humble-rviz2 -y \
+    # && apt-get install ros-humble-demo-nodes-py -y \
     && apt-get install -y \
     libxcb-xinerama0 \
     libxcb1 \
