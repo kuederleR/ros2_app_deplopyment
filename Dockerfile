@@ -49,8 +49,8 @@ RUN rosdep update \
 # USER $USERNAME
 # CMD ["/bin/bash", "-c", "source /opt/ros/humble/setup.bash && source /ros2_app_deployment/install/setup.bash && /bin/bash"]
 COPY entrypoint.sh /ros2_app_deployment/entrypoint.sh
-RUN chmod +x /ros2_app_deployment/entrypoint.sh
-ENTRYPOINT ["/ros2_app_deployment/entrypoint.sh"]
+# RUN chmod +x /ros2_app_deployment/entrypoint.sh
+# ENTRYPOINT ["/ros2_app_deployment/entrypoint.sh"]
 
 
 # Run export RMW_IMPLEMENTATION=rmw_fastrtps_cpp -- Don't need to do this anymore
